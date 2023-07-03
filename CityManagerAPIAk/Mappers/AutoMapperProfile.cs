@@ -14,6 +14,9 @@ namespace CityManagerAPIAk.Mappers
                     option.MapFrom(src => src.CityImages.FirstOrDefault(c => c.IsMain).Url);
                 })
                 .ReverseMap();
+            CreateMap<City, CityDto>().ReverseMap();
+            CreateMap<City, CityDetailDto>().ReverseMap();
+            CreateMap<CityImage, CityImageDto>().ReverseMap();
         }
     }
 }
