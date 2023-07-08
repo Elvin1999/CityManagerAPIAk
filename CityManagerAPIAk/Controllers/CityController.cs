@@ -2,11 +2,13 @@
 using CityManagerAPIAk.Data;
 using CityManagerAPIAk.Dtos;
 using CityManagerAPIAk.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityManagerAPIAk.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CityController : ControllerBase
