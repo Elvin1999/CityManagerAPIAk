@@ -21,6 +21,12 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
+
 builder.Services.AddDbContext<DataContext>(opt =>
 opt.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CITYMANAGERDB;Integrated Security=True;"));
 
@@ -55,6 +61,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+app.UseCors("corsapp");
 app.UseAuthorization();
 
 app.MapControllers();
